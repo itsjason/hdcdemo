@@ -22,10 +22,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
-/**
- * Created by carlsona on 7/29/13.
- */
 public class RestClient {
 
     private Header[] responseHeaders;
