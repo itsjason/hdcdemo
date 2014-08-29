@@ -1,13 +1,27 @@
 package net.hdc.hdcdemoapp;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import net.hdc.hdcdemoapp.models.MovieSearchResults;
+import net.hdc.hdcdemoapp.services.RestClient;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 
 public class MainActivity extends Activity {
+
+    static final String TAG = "MAIN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +51,55 @@ public class MainActivity extends Activity {
 
     public void searchButtonClicked(View v) {
         // Check Input
+        final String input = ((EditText)findViewById(R.id.search_box)).getText().toString();
+        if(input.isEmpty())
+        {
+            Toast.makeText(this, "Please enter a search term", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Get search results
+        new AsyncTask<Void, Void, MovieSearchResults>() {
+            @Override
+            protected MovieSearchResults doInBackground(Void... voids) {
+                String apiBaseUrl = getString(R.string.api_base_url);
+                RestClient restClient = new RestClient(apiBaseUrl + "movies.json");
+                restClient.AddParam("apikey", getString(R.string.rotten_api_key));
+                try {
+                    restClient.AddParam("q", URLEncoder.encode(input, "UTF-8"));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                restClient.AddParam("page_limit", "10");
+                restClient.AddParam("page", "1");
+                try {
+                    restClient.Execute(RestClient.RequestMethod.GET);
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+
+                int responseCode = restClient.getResponseCode();
+                if(responseCode != 200) {
+                    Log.e(TAG, "Error Response: " + responseCode);
+                    return null;
+                }
+                String response = restClient.getResponse();
+                MovieSearchResults movieSearchResults = new Gson().fromJson(response, MovieSearchResults.class);
+                return movieSearchResults;
+            }
+
+            @Override
+            protected void onPostExecute(MovieSearchResults movieSearchResults) {
+                if(movieSearchResults == null) {
+                    Log.e(TAG, "Null result");
+                    return;
+                }
+
+                Toast.makeText(MainActivity.this, "Got results: " + movieSearchResults.getTotal(), Toast.LENGTH_SHORT).show();
+            }
+        }.execute();
+
         // Display Search Results
     }
 }

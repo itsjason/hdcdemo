@@ -4,6 +4,7 @@
     <string name="app_name">HdcDemoApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="rotten_api_key">xwkrxp65v7bkjfatutas7xhq</string>
+    <string name="rotten_api_key">hgqk9seksqbyub9vkxm3r457</string>
+    <string name="api_base_url">http://api.rottentomatoes.com/api/public/v1.0/</string>
 
 </resources>
