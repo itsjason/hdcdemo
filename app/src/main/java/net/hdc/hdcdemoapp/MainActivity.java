@@ -7,16 +7,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import net.hdc.hdcdemoapp.models.Movie;
 import net.hdc.hdcdemoapp.models.MovieSearchResults;
 import net.hdc.hdcdemoapp.services.RestClient;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 
 
 public class MainActivity extends Activity {
@@ -97,6 +101,16 @@ public class MainActivity extends Activity {
                 }
 
                 Toast.makeText(MainActivity.this, "Got results: " + movieSearchResults.getTotal(), Toast.LENGTH_SHORT).show();
+
+                List<Movie> movies = movieSearchResults.getMovies();
+                String[] titles = new String[movies.size()];
+                for(int i = 0; i < movies.size(); i++) {
+                    titles[i] = movies.get(i).getTitle();
+                }
+
+                ListView searchResults = (ListView) findViewById(R.id.search_results);
+                searchResults.setAdapter(new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, titles));
+
             }
         }.execute();
 
