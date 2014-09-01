@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -109,7 +108,9 @@ public class MainActivity extends Activity {
                 }
 
                 ListView searchResults = (ListView) findViewById(R.id.search_results);
-                searchResults.setAdapter(new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, titles));
+                MovieResultAdapter adapter = new MovieResultAdapter(MainActivity.this, 0, movies.toArray(new Movie[0]));
+                //searchResults.setAdapter(new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, titles));
+                searchResults.setAdapter(adapter);
 
             }
         }.execute();
