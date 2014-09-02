@@ -101,14 +101,19 @@ public class MainActivity extends Activity {
                     return null;
                 }
                 String response = restClient.getResponse();
-                MovieSearchResults movieSearchResults = new Gson().fromJson(response, MovieSearchResults.class);
-                return movieSearchResults;
+
+                try {
+                    MovieSearchResults movieSearchResults = new Gson().fromJson(response, MovieSearchResults.class);
+                    return movieSearchResults;
+                } catch (Exception e) {
+                    return null;
+                }
             }
 
             @Override
             protected void onPostExecute(MovieSearchResults movieSearchResults) {
                 if(movieSearchResults == null) {
-                    Log.e(TAG, "Null result");
+                    Log.e(TAG, "There was an error retrieving the movie search results.");
                     return;
                 }
 
