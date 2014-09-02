@@ -70,6 +70,14 @@ public class MovieResultAdapter extends ArrayAdapter<Movie> {
 
         TextView titleView = (TextView) convertView.findViewById(R.id.title);
         titleView.setText(movie.getTitle());
+        try {
+            String cast = movie.getAbridgedCast().get(0).getName() + ", " + movie.getAbridgedCast().get(1).getName();
+            ((TextView) convertView.findViewById(R.id.cast)).setText(cast);
+        } catch (Exception e) {
+            ((TextView) convertView.findViewById(R.id.cast)).setText("Cast Unknown!");
+        }
+        String year_rating = "Year: " + movie.getYear() + " Rating: " + movie.getRatings().getAudienceScore();
+        ((TextView) convertView.findViewById(R.id.year_rating)).setText(year_rating);
 
         return convertView;
     }
