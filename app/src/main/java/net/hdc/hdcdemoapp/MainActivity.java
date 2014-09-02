@@ -1,6 +1,7 @@
 package net.hdc.hdcdemoapp;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -69,6 +70,13 @@ public class MainActivity extends Activity {
             return;
         }
 
+
+        final ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setMessage("Searching Movies...");
+        dialog.setIndeterminate(true);
+        dialog.show();
+
+
         // Get search results
         new AsyncTask<Void, Void, MovieSearchResults>() {
             @Override
@@ -79,6 +87,8 @@ public class MainActivity extends Activity {
 
             @Override
             protected void onPostExecute(MovieSearchResults movieSearchResults) {
+                dialog.dismiss();
+
                 if(movieSearchResults == null) {
                     displaySearchError();
                     return;
