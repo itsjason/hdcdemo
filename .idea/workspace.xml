@@ -23,7 +23,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e0aee60-e50c-43ce-9b8e-ebde0a3af494" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/net/hdc/hdcdemoapp/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/net/hdc/hdcdemoapp/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -91,8 +90,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/net/hdc/hdcdemoapp/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5650685" vertical-offset="0" max-vertical-offset="1785">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.81335616" vertical-offset="1055" max-vertical-offset="1785">
+              <caret line="122" column="86" selection-start-line="122" selection-start-column="86" selection-end-line="122" selection-end-column="86" />
               <folding>
                 <element signature="e#965#1330#0" expanded="true" />
                 <element signature="e#1319#1320#0" expanded="true" />
@@ -139,9 +138,14 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.7777777" vertical-offset="0" max-vertical-offset="645">
-              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-              <folding />
+            <state vertical-scroll-proportion="-16.185184" vertical-offset="103" max-vertical-offset="810">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding>
+                <element signature="e#231#266#0" expanded="true" />
+                <element signature="e#292#327#0" expanded="true" />
+                <element signature="e#351#384#0" expanded="true" />
+                <element signature="e#411#444#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -886,8 +890,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/search_result_list_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/hdc/hdcdemoapp/MovieResultAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/net/hdc/hdcdemoapp/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       </list>
     </option>
   </component>
@@ -1336,7 +1340,11 @@
       <created>1409599204564</created>
       <updated>1409599204564</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Handle enter / done in search box">
+      <created>1409624963971</created>
+      <updated>1409624963971</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1393,7 +1401,8 @@
     <MESSAGE value="Get movie search result" />
     <MESSAGE value="Display search results in list view" />
     <MESSAGE value="Use custom list adapter to display movie thumbnails" />
-    <option name="LAST_COMMIT_MESSAGE" value="Use custom list adapter to display movie thumbnails" />
+    <MESSAGE value="Handle enter / done in search box" />
+    <option name="LAST_COMMIT_MESSAGE" value="Handle enter / done in search box" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1576,16 +1585,21 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.7777777" vertical-offset="0" max-vertical-offset="645">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding />
+        <state vertical-scroll-proportion="-16.185184" vertical-offset="103" max-vertical-offset="810">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="e#231#266#0" expanded="true" />
+            <element signature="e#292#327#0" expanded="true" />
+            <element signature="e#351#384#0" expanded="true" />
+            <element signature="e#411#444#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/net/hdc/hdcdemoapp/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5650685" vertical-offset="0" max-vertical-offset="1785">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.81335616" vertical-offset="1055" max-vertical-offset="1785">
+          <caret line="122" column="86" selection-start-line="122" selection-start-column="86" selection-end-line="122" selection-end-column="86" />
           <folding>
             <element signature="e#965#1330#0" expanded="true" />
             <element signature="e#1319#1320#0" expanded="true" />
