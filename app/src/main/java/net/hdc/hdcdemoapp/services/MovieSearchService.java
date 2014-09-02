@@ -22,7 +22,7 @@ public class MovieSearchService {
         this.context = context;
     }
 
-    public MovieSearchResults getMovieSearchResults(String searchTerm) {
+    public MovieSearchResults getMovieSearchResults(String searchTerm, int selectedCount) {
         String apiBaseUrl = context.getString(R.string.api_base_url);
         RestClient restClient = new RestClient(apiBaseUrl + "movies.json");
         restClient.AddParam("apikey", context.getString(R.string.rotten_api_key));
@@ -31,7 +31,7 @@ public class MovieSearchService {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        restClient.AddParam("page_limit", "10");
+        restClient.AddParam("page_limit", selectedCount);
         restClient.AddParam("page", "1");
         try {
             restClient.Execute(RestClient.RequestMethod.GET);

@@ -8,8 +8,10 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import net.hdc.hdcdemoapp.models.Movie;
@@ -39,6 +41,12 @@ public class MainActivity extends Activity {
                 return false;
             }
         });
+
+        Spinner resultCountSpinner = (Spinner) findViewById(R.id.search_count_spinner);
+        String[] resultCounts = new String[] { "10", "20", "30", "40", "50" };
+        ArrayAdapter<String> adapter  = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, resultCounts);
+        resultCountSpinner.setAdapter(adapter);
+
     }
 
 
@@ -64,25 +72,26 @@ public class MainActivity extends Activity {
     public void searchButtonClicked(View v) {
         // Check Input
         final String input = ((EditText)findViewById(R.id.search_box)).getText().toString();
+        String selectedCountString = (String) ((Spinner) findViewById(R.id.search_count_spinner)).getSelectedItem();
+        final int selectedCount = Integer.parseInt(selectedCountString);
+
         if(input.isEmpty())
         {
             Toast.makeText(this, "Please enter a search term", Toast.LENGTH_SHORT).show();
             return;
         }
 
-
         final ProgressDialog dialog = new ProgressDialog(this);
         dialog.setMessage("Searching Movies...");
         dialog.setIndeterminate(true);
         dialog.show();
-
 
         // Get search results
         new AsyncTask<Void, Void, MovieSearchResults>() {
             @Override
             protected MovieSearchResults doInBackground(Void... voids) {
                 MovieSearchService movieSearchService = new MovieSearchService(MainActivity.this);
-                return movieSearchService.getMovieSearchResults(input);
+                return movieSearchService.getMovieSearchResults(input, selectedCount);
             }
 
             @Override
