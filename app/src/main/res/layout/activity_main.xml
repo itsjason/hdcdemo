@@ -12,6 +12,7 @@
         android:id="@+id/search_box"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:singleLine="true"
         />
 
     <Button
